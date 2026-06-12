@@ -25,11 +25,21 @@ Quedo atento a las instrucciones para acceder al material.
 Atentamente,
 [Tu Nombre]`;
 
-    const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-      destinatario
-    )}&su=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
 
-    window.open(url, "_blank");
+    if (isMobile) {
+      const mailtoUrl = `mailto:${destinatario}?subject=${encodeURIComponent(
+        asunto
+      )}&body=${encodeURIComponent(cuerpo)}`;
+      window.location.href = mailtoUrl;
+    } else {
+      const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+        destinatario
+      )}&su=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+      window.open(url, "_blank");
+    }
   };
 
   const tesisFiltradas = seccionSeleccionada === "TODAS"
