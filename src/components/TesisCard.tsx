@@ -6,15 +6,34 @@ interface TesisCardProps {
 }
 
 export default function TesisCard({ tesis, onSolicitar }: TesisCardProps) {
+  const tipo = tesis.tipo || "Especialización";
+
+  let tipoBadgeColor = "bg-indigo-50 text-indigo-700 border-indigo-100";
+  if (tipo === "Maestría") {
+    tipoBadgeColor = "bg-emerald-50 text-emerald-700 border-emerald-100";
+  } else if (tipo === "Doctorado") {
+    tipoBadgeColor = "bg-purple-50 text-purple-700 border-purple-100";
+  } else if (tipo === "Posdoctorado") {
+    tipoBadgeColor = "bg-amber-50 text-amber-700 border-amber-100";
+  } else if (tipo === "Especialización Técnica") {
+    tipoBadgeColor = "bg-teal-50 text-teal-700 border-teal-100";
+  }
+
   return (
     <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
       <div className="flex-1">
-        <div className="flex flex-wrap gap-2 mb-4">
-          <span className="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-md tracking-wide">
-            {tesis.seccion}
+        <div className="flex flex-wrap gap-2 mb-4 items-center">
+          <span className={`text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-1 rounded-md border ${tipoBadgeColor}`}>
+            {tipo}
           </span>
-          <span className="bg-blue-50 text-blue-800 text-xs font-bold px-3 py-1 rounded-md">
+          <span className="bg-blue-50 text-blue-700 border border-blue-100 text-[10px] font-extrabold px-2.5 py-1 rounded-md">
             {tesis.anio}
+          </span>
+          <span 
+            className="bg-gray-50 text-gray-600 border border-gray-100 text-[10px] font-extrabold px-2.5 py-1 rounded-md max-w-[150px] truncate"
+            title={tesis.seccion}
+          >
+            {tesis.seccion}
           </span>
         </div>
         <h3 className="text-xl font-bold text-gray-800 leading-tight mb-3">

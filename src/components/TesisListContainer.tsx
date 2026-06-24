@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { listaTesis, Tesis, SECCIONES } from "../data/tesis";
+import { listaTesis, Tesis, SECCIONES, TIPOS_TESIS, TipoTesis } from "../data/tesis";
 import TesisCard from "./TesisCard";
 
 export default function TesisListContainer() {
+  const [tipoSeleccionado, setTipoSeleccionado] = useState<string>("TODOS");
   const [seccionSeleccionada, setSeccionSeleccionada] = useState<string>("TODAS");
 
   const handleSolicitarPorGmail = (tesis: Tesis) => {
@@ -42,12 +43,84 @@ Atentamente,
     }
   };
 
-  const tesisFiltradas = seccionSeleccionada === "TODAS"
-    ? listaTesis
-    : listaTesis.filter(t => t.seccion === seccionSeleccionada);
+  // Asignar "Especialización" por defecto si el tipo no está definido
+  const tesisConTipo = listaTesis.map(t => ({
+    ...t,
+    tipo: t.tipo || "Especialización"
+  }));
+
+  // Manejar el cambio de tipo académico
+  const handleTipoChange = (nuevoTipo: string) => {
+    setTipoSeleccionado(nuevoTipo);
+    setSeccionSeleccionada("TODAS");
+  };
+
+  // Filtrar las secciones basadas en el tipo académico seleccionado
+  const seccionesDisponibles = SECCIONES.filter(seccion => {
+    if (tipoSeleccionado === "TODOS") return true;
+    return tesisConTipo.some(t => t.seccion === seccion && t.tipo === tipoSeleccionado);
+  });
+
+  // Filtrar las tesis para mostrar según los criterios elegidos
+  const tesisFiltradas = tesisConTipo.filter(t => {
+    const matchTipo = tipoSeleccionado === "TODOS" || t.tipo === tipoSeleccionado;
+    const matchSeccion = seccionSeleccionada === "TODAS" || t.seccion === seccionSeleccionada;
+    return matchTipo && matchSeccion;
+  });
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+
+      {/* Selector de Nivel Académico (Pills/Tabs) */}
+      <div className="mb-8">
+        <label className="block text-sm font-bold text-gray-700 mb-3 text-center uppercase tracking-wide">
+          Filtrar por Nivel Académico
+        </label>
+        <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto px-2">
+          <button
+            onClick={() => handleTipoChange("TODOS")}
+            className={`px-4 py-2 rounded-full text-sm font-bold transition-all cursor-pointer shadow-sm ${
+              tipoSeleccionado === "TODOS"
+                ? "bg-gradient-to-r from-blue-700 to-indigo-800 text-white shadow-blue-200/50 scale-105"
+                : "bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900 border border-gray-200"
+            }`}
+          >
+            🎓 TODOS ({tesisConTipo.length})
+          </button>
+          {TIPOS_TESIS.map((tipo) => {
+            const count = tesisConTipo.filter(t => t.tipo === tipo).length;
+            
+            let emoji = "📚";
+            if (tipo === "Especialización") emoji = "🔬";
+            if (tipo === "Maestría") emoji = "🎓";
+            if (tipo === "Doctorado") emoji = "🏛️";
+            if (tipo === "Posdoctorado") emoji = "🌟";
+            if (tipo === "Especialización Técnica") emoji = "🛠️";
+
+            return (
+              <button
+                key={tipo}
+                onClick={() => handleTipoChange(tipo)}
+                className={`px-4 py-2 rounded-full text-sm font-bold transition-all cursor-pointer shadow-sm flex items-center gap-1.5 ${
+                  tipoSeleccionado === tipo
+                    ? "bg-gradient-to-r from-blue-700 to-indigo-800 text-white shadow-blue-200/50 scale-105"
+                    : "bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900 border border-gray-200"
+                }`}
+              >
+                <span>{emoji}</span>
+                <span>{tipo}</span>
+                <span className={`text-xs px-1.5 py-0.5 rounded-full font-bold ${
+                  tipoSeleccionado === tipo 
+                    ? "bg-blue-600/30 text-white" 
+                    : "bg-gray-100 text-gray-500"
+                }`}>
+                  {count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       {/* Filtro por Sección optimizado para móviles */}
       <div className="mb-10 max-w-md mx-auto sm:max-w-xl">
@@ -61,12 +134,20 @@ Atentamente,
             onChange={(e) => setSeccionSeleccionada(e.target.value)}
             className="block w-full appearance-none bg-white border border-gray-300 hover:border-blue-400 px-4 py-3.5 pr-10 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800 font-semibold transition-colors cursor-pointer truncate"
           >
-            <option value="TODAS">📚 TODAS LAS SECCIONES</option>
-            {SECCIONES.map((seccion) => (
-              <option key={seccion} value={seccion}>
-                {seccion}
-              </option>
-            ))}
+            <option value="TODAS">
+              📚 TODAS LAS SECCIONES ({seccionesDisponibles.length})
+            </option>
+            {seccionesDisponibles.map((seccion) => {
+              const countInSeccion = tesisConTipo.filter(
+                t => t.seccion === seccion && (tipoSeleccionado === "TODOS" || t.tipo === tipoSeleccionado)
+              ).length;
+
+              return (
+                <option key={seccion} value={seccion}>
+                  {seccion} ({countInSeccion})
+                </option>
+              );
+            })}
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-blue-600">
             <svg className="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -101,8 +182,8 @@ Atentamente,
           </svg>
           <p className="mt-4 text-gray-600 text-lg font-medium">No hay tesis publicadas aún en esta sección.</p>
           <button
-            onClick={() => setSeccionSeleccionada("TODAS")}
-            className="mt-4 text-blue-600 hover:text-blue-800 font-semibold"
+            onClick={() => handleTipoChange("TODOS")}
+            className="mt-4 text-blue-600 hover:text-blue-800 font-semibold cursor-pointer"
           >
             Ver todas las secciones
           </button>

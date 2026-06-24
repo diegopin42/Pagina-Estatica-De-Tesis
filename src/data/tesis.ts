@@ -1,3 +1,13 @@
+export type TipoTesis = "Especialización" | "Maestría" | "Doctorado" | "Posdoctorado" | "Especialización Técnica";
+
+export const TIPOS_TESIS = [
+  "Especialización",
+  "Maestría",
+  "Doctorado",
+  "Posdoctorado",
+  "Especialización Técnica"
+] as const;
+
 export interface Tesis {
   id: string;
   titulo: string;
@@ -5,6 +15,7 @@ export interface Tesis {
   seccion: string;
   anio: number;
   descripcion?: string;
+  tipo?: TipoTesis;
 }
 
 export const SECCIONES = [
@@ -25,7 +36,13 @@ export const SECCIONES = [
   "NEGOCIACION INTERNACIONAL EN EL AREA DE HIDROCARBUROS",
   "GERENCIA DE PROYECTOS FERROVIARIOS",
   "GERENCIA DE TELECOMUNICACIONES",
-  "GEOGRAFÍA Y CARTOGRAFÍA MILITAR"
+  "GEOGRAFÍA Y CARTOGRAFÍA MILITAR",
+  "MAESTRÍA EN TECNOLOGÍA EDUCATIVA",
+  "MAESTRÍA EN GERENCIA DE LOGÍSTICA",
+  "DOCTORADO EN CIENCIAS GERENCIALES",
+  "DOCTORADO EN INNOVACIONES EDUCATIVAS",
+  "POSDOCTORADO EN INVESTIGACIÓN",
+  "ESPECIALIZACIÓN TÉCNICA EN TELECOMUNICACIONES"
 ] as const;
 
 export const tesisDerechoAeronautico: Tesis[] = [
@@ -16383,6 +16400,66 @@ export const tesisDeGeografiaYCartografiaMilitar: Tesis[] = [
 
 ]
 
+export const tesisMaestria: Tesis[] = [
+  {
+    id: "MAE-001",
+    titulo: "DISEÑO DE UN SISTEMA DE INFORMACIÓN WEB PARA LA GESTIÓN DE CONTROL DE ESTUDIOS EN EL DEPARTAMENTO DE POSTGRADO DE LA UNEFA",
+    autor: "ING. CARLOS RAMÍREZ",
+    seccion: "MAESTRÍA EN TECNOLOGÍA EDUCATIVA",
+    anio: 2024,
+    tipo: "Maestría"
+  },
+  {
+    id: "MAE-002",
+    titulo: "PROPUESTA DE OPTIMIZACIÓN EN EL CANAL DE DISTRIBUCIÓN DE GAS LICUADO DE PETRÓLEO EN LA REGIÓN CENTRAL",
+    autor: "ING. MARÍA GÓMEZ",
+    seccion: "MAESTRÍA EN GERENCIA DE LOGÍSTICA",
+    anio: 2023,
+    tipo: "Maestría"
+  }
+];
+
+export const tesisDoctorado: Tesis[] = [
+  {
+    id: "DOC-001",
+    titulo: "MODELO TEÓRICO EN ECO-INNOVACIÓN TECNOLÓGICA PARA EL DESARROLLO SOSTENIBLE DE LAS PYMES INDUSTRIALES",
+    autor: "MSC. JOSÉ MENDOZA",
+    seccion: "DOCTORADO EN CIENCIAS GERENCIALES",
+    anio: 2025,
+    tipo: "Doctorado"
+  },
+  {
+    id: "DOC-002",
+    titulo: "CONSTRUCCIÓN EPISTÉMICA DE LA DOCENCIA UNIVERSITARIA EN ENTORNOS VIRTUALES DE APRENDIZAJE DESDE LA PERSPECTIVA COMPLEJA",
+    autor: "MSC. ANA HERNÁNDEZ",
+    seccion: "DOCTORADO EN INNOVACIONES EDUCATIVAS",
+    anio: 2024,
+    tipo: "Doctorado"
+  }
+];
+
+export const tesisPosdoctorado: Tesis[] = [
+  {
+    id: "PSD-001",
+    titulo: "ÉTICA Y PARADIGMAS EN EL CONTEXTO DE LA CIENCIA CONTEMPORÁNEA Y LA INVESTIGACIÓN TRANSDISCIPLINAR",
+    autor: "DRA. BEATRIZ SILVA",
+    seccion: "POSDOCTORADO EN INVESTIGACIÓN",
+    anio: 2025,
+    tipo: "Posdoctorado"
+  }
+];
+
+export const tesisEspecializacionTecnica: Tesis[] = [
+  {
+    id: "EST-001",
+    titulo: "MANTENIMIENTO PREVENTIVO DE SISTEMAS DE COMUNICACIÓN DE RADIOENLACE DE BANDA ANCHA",
+    autor: "TEC. LUIS CASTRO",
+    seccion: "ESPECIALIZACIÓN TÉCNICA EN TELECOMUNICACIONES",
+    anio: 2024,
+    tipo: "Especialización Técnica"
+  }
+];
+
 export const listaTesis: Tesis[] = [
   ...tesisDerechoAeronautico,
   ...tesisDerechoProcesalLaboral,
@@ -16399,6 +16476,9 @@ export const listaTesis: Tesis[] = [
   ...tesisNegociosInternacionalesDeHidrocarburos,
   ...tesisGerenciaFerrobiaria,
   ...tesisGerenciaDeTelecomunicaciones,
-  ...tesisDeGeografiaYCartografiaMilitar
-
+  ...tesisDeGeografiaYCartografiaMilitar,
+  ...tesisMaestria,
+  ...tesisDoctorado,
+  ...tesisPosdoctorado,
+  ...tesisEspecializacionTecnica
 ];
