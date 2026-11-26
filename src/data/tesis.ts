@@ -44,7 +44,7 @@ export const SECCIONES = [
   "POSDOCTORADO EN INVESTIGACIÓN",
   "ESPECIALIZACIÓN TÉCNICA EN TELECOMUNICACIONES",
   "MAESTRIA CIENCIA JURIDICA",
-  "MAESTRIA EDUCAION SUPERIOR",
+  "MAESTRIA EDUCACION SUPERIOR",
   "MAESTRIA EXTRACCION CRUDOS PESADOS",
   "MAESTRIA GERENCIA AMBIENTAL",
   "MAESTRIA GERENCIA LOGISTICA",
@@ -52,9 +52,8 @@ export const SECCIONES = [
   "MAESTRIA GERENCIA RECURSOS HUMANOS",
   "MAESTRIA GOBIERNO ELECTRONICO",
   "MAESTRIA PERFORACION PETROLERA",
-  "MAESTRIA TECNOLOGIA EDUCAITVA",
+  "MAESTRIA TECNOLOGIA EDUCATIVA",
   "MAESTRIA TICS"
-
 ] as const;
 
 export const tesisDerechoAeronautico: Tesis[] = [
@@ -22815,7 +22814,7 @@ export const tesisMaestriaGerenciaLogistica: Tesis[] = [
   }
 
 ];
-  export const tesisMaestriaGerenciaMantenimiento: Tesis[] = [
+export const tesisMaestriaGerenciaMantenimiento: Tesis[] = [
   {
     id: "MGM-001",
     titulo: "OPTIMIZACIÓN DE LA GESTIÓN DEL CENTRO DE MANTENIMIENTO MARÍTIMO DEL COMANDO DE VIGILANCIA COSTERA",
@@ -26707,6 +26706,7 @@ export const listaTesis: Tesis[] = [
   ...tesisMaestriaExtraccionCrudosPesados,
   ...tesisMaestriaGerenciaAmbiental,
   ...tesisMaestriaGerenciaLogistica,
+  ...tesisMaestriaGerenciaMantenimiento,
   ...tesisMaestriaPerforacionPetrolera,
   ...tesisMaestriaTecnologiaEducativa,
     
