@@ -16473,7 +16473,7 @@ export const tesisEspecializacionTecnica: Tesis[] = [
 ];
 
 
-export const TESIS_MCJ: Tesis[] = [
+export const tesisCienciaJuridica: Tesis[] = [
   {
     id: "MCJ-001",
     titulo: "EL DELITO DE TRAICIÓN A LA PATRIA Y SU REPERCUSIÓN EN LA SEGURIDAD Y DEFENSA NACIONAL EN TIEMPO DE PAZ.",
@@ -18075,7 +18075,7 @@ export const TESIS_MCJ: Tesis[] = [
     "tipo": "Maestría"
   }
 ];
-export const TESIS_MES_001_093: Tesis[] = [
+export const tesisMaestriaEducacionSuperior: Tesis[] = [
   {
     id: "MES-001",
     titulo: "PROCESOS DE PLANIFICACIÓN, ORGANIZACIÓN Y EVALUACIÓN QUE PONE EN PRACTICA LA UNEFA, PARA EL DESARROLLO DE LAS ACTIVIDADES DE EXTENSIÓN UNIVERSITARIA”",
@@ -18910,7 +18910,7 @@ export const TESIS_MES_001_093: Tesis[] = [
   }
 
 ];
-export const TESIS_MECP_001_083: Tesis[] = [
+export const tesisMaestriaExtraccionCrudosPesados: Tesis[] = [
   {
     id: "MECP-001",
     titulo: "MODELO CINÉTICO DEL PROCESO DE COMBUSTIÓN EN SITIO DE UN CRUDO DE LA FAJA PETROLÍFERA DEL ORINOCO",
@@ -19576,7 +19576,7 @@ export const TESIS_MECP_001_083: Tesis[] = [
     tipo: "Maestría"
   }
 ];
-export const TESIS_MGA_001_100: Tesis[] = [
+export const tesisMaestriaGerenciaAmbiental: Tesis[] = [
   {
     id: "MGA-001",
     titulo: "Influencia de la actividad petrolera en las aguas subterráneas en la Mesa de Guanipa.",
@@ -21148,7 +21148,7 @@ export const TESIS_MGA_001_100: Tesis[] = [
 
 ];
 
-export const TESIS_MGL_001_100: Tesis[] = [
+export const tesisMaestriaGerenciaLogistica: Tesis[] = [
   {
     id: "MGL-001",
     titulo: "ESTRATEGIAS PARA DINAMIZAR EL PROCESO DE CONTRATACIÓN DE SERVICIOS DE CONSTRUCCIÓN Y MANTENIMIENTO DE OBRAS CIVILES EN LA ARMADA, SUJETO A CONTROL PREVIO",
@@ -22815,7 +22815,7 @@ export const TESIS_MGL_001_100: Tesis[] = [
   }
 
 ];
-export const TESIS_MGM_001_099: Tesis[] = [
+  export const tesisMaestriaGerenciaMantenimiento: Tesis[] = [
   {
     id: "MGM-001",
     titulo: "OPTIMIZACIÓN DE LA GESTIÓN DEL CENTRO DE MANTENIMIENTO MARÍTIMO DEL COMANDO DE VIGILANCIA COSTERA",
@@ -25073,7 +25073,7 @@ export const TESIS_MGM_001_099: Tesis[] = [
     tipo: "Maestría"
   }
 ];
-export const TESIS_MGE_001_066: Tesis[] = [
+export const tesisGobiernoElectronico: Tesis[] = [
   {
     id: "MGE-001",
     titulo: "TECNODEMOCRACIA Y CAPACIDAD CIUDADANA FUSIONADA A LA UNIVERSIDAD EN EL MARCO DE UNA NUEVA CONFIGURACIÓN SOCIOPOLITICA Y ECONOMICA",
@@ -25603,7 +25603,7 @@ export const TESIS_MGE_001_066: Tesis[] = [
     tipo: "Maestría"
   }
 ];
-export const TESIS_MPP_001_009: Tesis[] = [
+export const tesisMaestriaPerforacionPetrolera: Tesis[] = [
   {
     id: "MPP-001",
     titulo: "EVALUACIÓN DE LOS PARÁMETROS GEOMECANICOS DE LAS ARENAS PRODUCTORAS DE UN YACIMIENTO EN EL ESTE DE VENEZUELA MEDIANTE LA TECNOLOGIA ROCK STRENGTH DEVICE",
@@ -25677,7 +25677,7 @@ export const TESIS_MPP_001_009: Tesis[] = [
     tipo: "Maestría"
   }
 ];
-export const TESIS_MTE_001_089: Tesis[] = [
+export const tesisMaestriaTecnologiaEducativa: Tesis[] = [
   {
     id: "MTE-001",
     titulo: "LINEAMIENTOS ESTRATÉGICOS EDUCATIVOS PARA ORIENTAR EL PERFIL DE LA CARRERA DE EDUCACIÓN INTEGRAL ASOCIADO A LAS NUEVAS TECNOLOGÍAS EMERGENTES. CASO: UNEFA-NÚCLEO CARACAS",
@@ -26702,4 +26702,12 @@ export const listaTesis: Tesis[] = [
   ...tesisDoctorado,
   ...tesisPosdoctorado,
   ...tesisEspecializacionTecnica,
+  ...tesisCienciaJuridica,
+  ...tesisMaestriaEducacionSuperior,
+  ...tesisMaestriaExtraccionCrudosPesados,
+  ...tesisMaestriaGerenciaAmbiental,
+  ...tesisMaestriaGerenciaLogistica,
+  ...tesisMaestriaPerforacionPetrolera,
+  ...tesisMaestriaTecnologiaEducativa,
+    
 ];

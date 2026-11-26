@@ -1,3 +1,4 @@
+import Image from "next/image";
 import TesisListContainer from "@/components/TesisListContainer";
 
 export default function Home() {
@@ -8,9 +9,11 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center">
-          <img 
+          <Image 
             src="/unefa-logo.png" 
             alt="Logo UNEFA" 
+            width={144}
+            height={144}
             className="h-28 md:h-36 w-auto mb-6 drop-shadow-[0_6px_15px_rgba(255,255,255,0.15)] hover:scale-105 transition-transform duration-300 ease-out"
           />
           <span className="text-xs md:text-sm font-bold tracking-widest text-blue-300 uppercase mb-2">

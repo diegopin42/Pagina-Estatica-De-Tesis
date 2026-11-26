@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { listaTesis, Tesis, SECCIONES, TIPOS_TESIS, TipoTesis } from "../data/tesis";
+import { listaTesis, Tesis, SECCIONES, TIPOS_TESIS } from "../data/tesis";
 import TesisCard from "./TesisCard";
 
 export default function TesisListContainer() {
